@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>葵爸的婴儿腰凳/背带大横评 · 10 款热销款监管抽查记录深挖</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f5f7fa; color:#222; line-height:1.7; }
+  .wrap { max-width:1000px; margin:0 auto; padding:24px 16px 60px; }
+  header { text-align:center; padding:30px 0 12px; }
+  header h1 { font-size:28px; font-weight:800; letter-spacing:.5px; }
+  header .sub { color:#888; margin-top:8px; font-size:14px; }
+  .section { background:#fff; border-radius:14px; padding:22px; margin:18px 0; box-shadow:0 2px 12px rgba(0,0,0,.05); }
+  .section h2 { font-size:20px; border-left:4px solid #1E5AA8; padding-left:10px; margin-bottom:8px; }
+  .section h3 { font-size:16px; margin:16px 0 6px; color:#1E5AA8; }
+  .section-desc { color:#666; font-size:14px; margin-bottom:14px; }
+  .chart-s { font-size:14px; color:#444; background:#f0f4fa; border-radius:10px; padding:12px 14px; margin-top:12px; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; }
+  .card { border:1px solid #eee; border-radius:12px; padding:14px; position:relative; }
+  .card.d1 { border-color:#bfe3c2; background:#fbfffb; }
+  .card.d2 { border-color:#f0d890; background:#fffdf6; }
+  .card.d3 { border-color:#f0b8b0; background:#fffaf9; }
+  .card h3 { font-size:15px; margin:0 0 4px; color:#222; }
+  .card .brand { font-size:12px; color:#999; }
+  .card .price { font-size:22px; font-weight:800; color:#C0392B; margin-top:6px; }
+  .card .unit { color:#888; font-size:12px; }
+  .card ul { list-style:none; margin-top:8px; font-size:13px; }
+  .card li { display:flex; justify-content:space-between; gap:8px; padding:3px 0; border-bottom:1px dashed #f0f0f0; }
+  .card li span { color:#777; flex:0 0 auto; }
+  .card li b { text-align:right; }
+  .rk { position:absolute; top:-9px; right:10px; background:#1E5AA8; color:#fff; font-size:12px; font-weight:700; padding:1px 9px; border-radius:9px; }
+  table { width:100%; border-collapse:collapse; font-size:13.5px; margin-top:8px; }
+  th,td { border:1px solid #e8e8e8; padding:9px 10px; text-align:center; vertical-align:middle; }
+  th { background:#1E5AA8; color:#fff; font-weight:600; }
+  tr:nth-child(even) td { background:#fafcff; }
+  td.hl { background:#fff4e6 !important; font-weight:700; }
+  td.bad { background:#fdeeec !important; color:#C0392B; font-weight:700; }
+  td.ok  { background:#eef8ef !important; color:#2E7D32; font-weight:700; }
+  td.l { text-align:left; }
+  .disclaimer { font-size:12px; color:#999; margin-top:18px; padding:14px; background:#f7f7f7; border-radius:10px; }
+  .radar-box { width:100%; height:440px; }
+  .bar-box { width:100%; height:400px; }
+  .sc-box { width:100%; height:400px; }
+  .callout { border-radius:10px; padding:13px 15px; margin-top:14px; font-size:14px; }
+  .callout.warn { background:#fff8e6; border:1px solid #f0d890; color:#7a5c00; }
+  .callout.good { background:#eef8ef; border:1px solid #bfe3c2; color:#2E5D33; }
+  .callout.dang { background:#fdeeec; border:1px solid #f0b8b0; color:#8e2b1e; }
+  .callout.info { background:#eef3fb; border:1px solid #c3d6ef; color:#1c3f6e; }
+  .pit { display:flex; gap:12px; padding:12px 0; border-bottom:1px dashed #eee; }
+  .pit:last-child { border-bottom:none; }
+  .pit .num { flex:0 0 32px; height:32px; border-radius:50%; background:#C0392B; color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:15px; }
+  .pit .num.green { background:#2E7D32; }
+  .pit .num.blue { background:#1E5AA8; }
+  .pit b { display:block; font-size:15px; }
+  .pit p { font-size:13.5px; color:#555; margin-top:2px; }
+  .lv { display:inline-block; font-size:11.5px; padding:1px 7px; border-radius:8px; white-space:nowrap; font-weight:600; }
+  .lv.g { background:#e6f4e7; color:#1f5c25; border:1px solid #bfe3c2; }
+  .lv.o { background:#fff3e0; color:#8a5a00; border:1px solid #f0d890; }
+  .lv.w { background:#f0f0f0; color:#666; border:1px solid #ddd; }
+  a { color:#1E5AA8; }
+  .src { font-size:12px; color:#888; }
+  .src a { color:#3b7dd8; }
+  .tldr { font-size:15px; }
+  .tldr li { margin:7px 0 7px 20px; }
+  .quote { background:#f7f9fc; border-left:3px solid #1E5AA8; padding:10px 14px; margin:10px 0; font-size:13.5px; color:#333; }
+  .quote i { color:#666; display:block; margin-top:4px; font-size:12.5px; }
+  .scroll { overflow-x:auto; }
+  .scroll table { min-width:760px; }
+  @media (max-width:640px){ header h1 { font-size:22px; } .section { padding:16px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>葵爸的婴儿腰凳/背带大横评</h1>
+    <div class="sub">10 款全网热销款 · 逐款深挖市监局监督抽查原始记录 · 数据采集 2026 年 9 月</div>
+  </header>
+
+  <!-- ============ TL;DR ============ -->
+  <div class="section">
+    <h2>先看结论：这一期挖到了两件事</h2>
+    <div class="callout dang">
+      <b>🚨 发现一：一款卖到 450 元的热销腰凳，同型号刚被市监局抽检判为不合格。</b><br>
+      2025 年 11 月苏州市市场监督管理局公布的婴幼儿背带（袋）监督抽查中，一款「云感腰凳」（标称商标 <b>Oneye</b>、型号 <b>WY-YD001</b>、标称生产单位 晋江市见来成婴儿用品有限公司）<b>纤维含量不合格</b>。经交叉核对，该商标、产品名、型号与在售热销的<b>「丸丫云感腰凳」为同一型号</b>。<br>
+      <span class="src">※ 需要说清：纤维含量属<b>标识项</b>（成分标注与实测不符，即"货不真价不实"），不等于"用了会摔娃"，但它是国标不合格判定，直接反映品控与诚信。评分中据此扣分，未夸大为结构安全问题。</span>
+    </div>
+    <div class="callout warn">
+      <b>⚠️ 发现二：商详页上的"IHDI 认证 / 国际髋关节协会认证"，是一句不成立的话术。</b><br>
+      IHDI（国际髋关节发育不良协会）<b>官网原文自己写着</b>：它不是认证机构、从未对任何产品做过安全测试、不认证也不背书任何产品。而所谓"IHDI 合作伙伴"是<b>明码标价的付费企业合作</b>——银级 2.5 万美元 / 5 年，最高钻石级 50 万美元 / 5 年。<br>
+      更关键的是 IHDI 明确表态：<b>没有任何背带能导致或预防髋关节发育不良。</b>下面有完整原文与出处。
+    </div>
+    <h3>综合排名（安全 45% + 价格 25% + 口碑 20% + 髋位公示 10%）</h3>
+    <ul class="tldr">
+      <li><b>综合第一：抱抱熊 V28（¥139）</b>——不是因为它做得最高级，而是因为它<b>便宜且经得起查</b>：同品牌腰凳在 2022 苏州、2023 苏州、2024 南京、2025 苏州<b>四次</b>监督抽查中均"未发现不合格"。</li>
+      <li><b>安全记录最扎实：bebebus 轻享家 Pro（¥610）与 虎贝尔 AirFit（¥398）</b>——两者参评型号/同系列均在 2025 年苏州抽查名单的"未发现不合格"表里，且未核到任何不合格记录。</li>
+      <li><b>最该谨慎：十月结晶（安全分 2/10）与 丸丫（4/10）</b>——前者同品牌腰凳被检出<b>整体动态稳定性</b>（结构安全项）不合格并有多次不合格史 + 万元罚单；后者同型号纤维含量不合格。</li>
+      <li><b>进口高端排名不高，但不等于差</b>：Ergobaby 两款掉到 7、8 名，主因是<b>价格分低</b>（¥1129/¥1199）+ <b>在国内监管抽查名单中查无记录</b>（既非合格也非不合格，按中性计分），不是查到了问题。详见下方说明。</li>
+      <li><b>意外发现：抱抱熊 V28 与 虎贝尔 AirFit 的标称生产单位是同一家工厂</b>（晋江嘉年华婴儿用品有限公司）。价差 259 元，出处同源。</li>
+    </ul>
+  </div>
+
+  <!-- ============ 可信度边界 ============ -->
+  <div class="section">
+    <h2>数据来源与可信度边界（读前必看）</h2>
+    <p class="section-desc">本页是个人博主的<b>资料整合型横评</b>，<b>不是独立实验室盲测，也不是官方检测报告</b>。我没有自费买齐 10 款样品统一送检。本期的特点是：<b>把评分主轴放在"能被第三方复核的监管抽查记录"上</b>，而不是放在我摸样品的手感上。</p>
+    <div class="scroll">
+    <table>
+      <tr><th style="width:50%">高可信，可以直接采信</th><th>仅供参考，下单前需自行核验</th></tr>
+      <tr>
+        <td class="l">
+          <b>① 市监局监督抽查公告</b>：本页安全维度<b>全部</b>来自苏州、南京、上海、浙江等市场监管部门公开的监督抽查通报与行政处罚信息。这是<b>市场随机买样</b>，效力最高，可点链接自查。<br>
+          <b>② IHDI 官网原文</b>：关于"是否认证""合作费用""背带与髋关节的因果关系"，全部直引官网英文原句并附链接。<br>
+          <b>③ 国标编号与强制性判定</b>：GB 开头为强制性、GB/T 开头为推荐性，属标准体系客观事实。<br>
+          <b>④ 评论数</b>：取自京东官方品牌排行榜页公示值。
+        </td>
+        <td class="l">
+          <b>① 参考价</b>：采集自 2026 年 8–9 月主流电商页面，属<span class="lv o">🟠 电商页公示</span>，大促波动极大，以你下单时页面为准。<br>
+          <b>② 综合评分</b>：作者设定权重的加权模型，<b>仅供本页 10 款内部横比</b>，换权重就换排名。模型与复算脚本已公开（见页末）。<br>
+          <b>③ "未核到不合格记录" ≠ "已通过检测"</b>：只说明我在公开渠道没查到，不代表该型号被抽检过。本页对这类情况按<b>中性 6 分</b>处理，不当加分项。<br>
+          <b>④ 仅限本页具体型号</b>：同品牌其他型号、不同批次工艺可能完全不同。评论数含水分。
+        </td>
+      </tr>
+    </table>
+    </div>
+    <div class="callout warn">
+      <b>一句话边界：</b>本页最有价值的部分是<b>"哪些型号被监管抽到过、结果如何"这份可点击核查的记录表</b>，以及 IHDI 话术的辨伪。至于"哪个背着更舒服"，这件事只有你自己上身试才知道，任何横评都替代不了。
+    </div>
+  </div>
+
+  <!-- ============ 参评清单 ============ -->
+  <div class="section">
+    <h2>参评清单：10 款 · ¥139–1199 全价位</h2>
+    <p class="section-desc">选品标准：京东"婴儿背带 / 高端婴儿背带"品牌排行榜在榜热销款，覆盖百元档到进口高端；每款均可在主流电商查到独立商品页与公示评论数。<b>卡片底色</b>：绿=安全记录扎实，黄=中性/未核到记录，红=有监管不合格记录。</p>
+    <div class="cards" id="cards"></div>
+    <div class="callout info">
+      <b>关于"腰凳+背带"与"纯背带"：</b>本期 9 款是二合一（可拆成腰凳单用），仅 Ergobaby Omni Breeze 是纯软结构背带（无硬质坐凳）。二者不是同一种东西，横比时请注意：<b>纯背带更适合小月龄和长时间穿戴，硬质腰凳更适合已能独坐的大月龄短途抱放</b>。
+    </div>
+  </div>
+
+  <!-- ============ 综合排名 ============ -->
+  <div class="section">
+    <h2>综合评分排名（加权模型 · 可复算）</h2>
+    <p class="section-desc">
+      四个维度全部要求"有可点击的公开来源"才计分。本期<b>刻意删掉了"月龄覆盖""参数完整度"两个维度</b>——因为我没有逐款访问商详采集统一口径的规格表，缺少可靠同口径来源，宁可不计分，也不编数字凑维度。
+    </p>
+    <div class="scroll"><div id="rankChart" class="bar-box"></div></div>
+    <div class="scroll"><table id="rank"></table></div>
+    <div class="callout info">
+      <b>权重怎么定的、为什么安全占 45%：</b>婴儿腰凳的失效后果是<b>宝宝从 1 米高度摔落</b>，属不可逆伤害，所以安全维度压倒性加权。价格 25% 是因为这个品类同质化严重、溢价空间大。髋位公示只给 10%——原因见下一节：IHDI 那套东西的实际信息价值，远低于商家希望你认为的程度。
+    </div>
+    <div class="callout warn">
+      <b>必须说清的一件事：Ergobaby 排第 7、第 8，不是因为查到了问题。</b>
+      本模型对"在国内公开监管抽查名单中查无记录"统一按中性 6 分处理。Ergobaby 两款正属此类（我只在 2022 年苏州抽查表里看到过一行"Ergobaby 坐垫式背带-透气款"，但公开表格该行结论字段被截断，<b>无法确认结果，故不予采信</b>）。它们排名靠后主要来自<b>价格分</b>：¥1129/¥1199 在本期价格区间里只能拿 3.2/3.0 分。<b>如果你不在意预算，Ergobaby 的月龄跨度与做工口碑仍是本期第一梯队。</b>
+    </div>
+  </div>
+
+  <!-- ============ 核心：监管抽查记录表 ============ -->
+  <div class="section">
+    <h2>本期核心：逐款监管抽查记录（全部可点击核查）</h2>
+    <p class="section-desc">这是本页最值钱的一张表。<b>所有"合格/不合格"判定均来自市场监管部门公开通报，不是品牌自检报告，也不是我的主观判断。</b>请注意区分"同型号"与"同品牌其他型号"——两者证明力差别很大。</p>
+    <div class="scroll"><table id="regTable"></table></div>
+
+    <h3>不合格项目的性质，不能一锅端</h3>
+    <p class="section-desc">很多测评把"抽检不合格"一律写成"不安全"，这不严谨。按国标，不同项目的含义差别很大：</p>
+    <div class="scroll">
+    <table>
+      <tr><th>不合格项目</th><th>性质</th><th>对应标准</th><th>实际意味着什么</th></tr>
+      <tr>
+        <td><b>整体动态稳定性</b></td>
+        <td class="bad">结构安全项</td>
+        <td>GB/T 40227《婴幼儿腰凳》<span class="lv w">推荐性</span></td>
+        <td class="l">模拟使用中的结构可靠性。不合格意味着<b>连接/承托部位在动态受力下可能失效</b>，直接关联摔落风险。这是最严重的一类。</td>
+      </tr>
+      <tr>
+        <td><b>pH 值</b></td>
+        <td class="bad">理化安全项</td>
+        <td>GB 31701《婴幼儿及儿童纺织产品安全技术规范》<span class="lv g">强制性</span></td>
+        <td class="l">婴幼儿纺织品 pH 须在 4.0–7.5。超标会破坏皮肤弱酸性保护层，引起刺激、瘙痒。这一项<b>违反的是强制性国标</b>。</td>
+      </tr>
+      <tr>
+        <td><b>耐光 / 汗复合色牢度</b></td>
+        <td class="bad">理化安全项</td>
+        <td>GB 31701 <span class="lv g">强制性</span></td>
+        <td class="l">色牢度差意味着染料在<b>汗液、日晒下会迁移到皮肤上</b>，婴幼儿会舔咬背带，风险更直接。</td>
+      </tr>
+      <tr>
+        <td><b>纤维含量</b></td>
+        <td class="hl">标识项</td>
+        <td>纺织品标识要求</td>
+        <td class="l">标注成分与实测不符（例：标"聚酯 90%+棉 10%"，实测"聚酯 100%"）。<b>属"货不真价不实"，不直接等于使用不安全</b>，但反映品控与诚信，且你为"含棉"多付的钱可能白花了。</td>
+      </tr>
+      <tr>
+        <td><b>使用说明</b></td>
+        <td class="hl">标识项（涉安全警示）</td>
+        <td>GB/T 40227 / GB/T 35270</td>
+        <td class="l">缺少月龄/体重限制、警示语等。看似小事，但腰凳<b>用错月龄本身就是主要风险来源</b>，说明书缺失会放大误用。</td>
+      </tr>
+    </table>
+    </div>
+
+    <h3>行业底数：这个品类的抽检不合格率不低</h3>
+    <div class="callout warn">
+      2024 年 1 月上海市市场监管局公布的婴幼儿背带监督抽查：<b>抽检 120 批次，12 批次不合格</b>，涉及 Babycare、英氏（Nuna）、迪士尼、十月结晶等知名品牌。其中迪士尼一款婴儿腰凳<b>一次被检出 5 项不合格</b>（使用说明、整体动态稳定性、耐光、汗复合色牢度、纤维含量），其生产/供货商已被上海闵行区市监局行政处罚。<br>
+      <span class="src">来源：上海市市场监管局通报，南都湾财社 2024 年 1 月报道 · <a href="https://www.sohu.com/a/752189548_161795" target="_blank" rel="noopener">报道链接</a><br>
+      ※ 年份订正：网上多篇转载文章把这次抽查写成"2025 年 1 月"。经回查原始报道时间线，实际为<b>2024 年 1 月</b>发布、南都记者 1 月 16 日致电涉事企业；后续 2024 年 4 月已针对该批次开出行政处罚。引用时请以 2024 年 1 月为准。</span>
+    </div>
+    <div class="callout info">
+      <b>换个角度看这个数字：</b>10% 的批次不合格率，说明<b>"这个品类整体不能闭眼买"</b>。同时也说明：一款产品能出现在"未发现不合格"名单里，是<b>真的有信息价值的</b>——它至少被随机买样查过一次，而绝大多数在售型号从未被抽到。
+    </div>
+  </div>
+
+  <!-- ============ 散点图：贵≠安全 ============ -->
+  <div class="section">
+    <h2>价格越贵，安全记录越好吗？并没有</h2>
+    <p class="section-desc">横轴价格、纵轴安全记录分。如果"贵=更靠得住"成立，点应该沿左下到右上排成一条线。实际结果是——<b>散的</b>。</p>
+    <div class="scroll"><div id="scatter" class="sc-box"></div></div>
+    <div class="chart-s">
+      <b>怎么读这张图：</b>左上角是"便宜且记录扎实"的甜区（抱抱熊 ¥139 / 虎贝尔 ¥398）；右上角是"贵且记录扎实"（bebebus ¥610）；<b>右下角和中下部是要警惕的区域</b>——花了 450 元买到同型号抽检不合格的丸丫，比花 139 元买到四次抽查过关的抱抱熊，明显不划算。<br>
+      <b>结论：在婴儿腰凳这个品类，价格不是安全的代理指标。</b>能替代它的，是"这个型号有没有被监管抽到过、结果如何"。
+    </div>
+  </div>
+
+  <!-- ============ 四维雷达 ============ -->
+  <div class="section">
+    <h2>四维能力雷达</h2>
+    <p class="section-desc">默认展示前 3 名 + 垫底 2 名的对比。点击下方图例可自由增减产品。四个维度均为 0–10 分。</p>
+    <div id="radar" class="radar-box"></div>
+    <div class="chart-s">
+      看形状比看面积有用：<b>抱抱熊</b>是"价格+口碑"双高但髋位公示为最低档；<b>bebebus</b>是安全与口碑拉满、价格拖后腿；<b>Ergobaby Alta 与 比威亚</b>在髋位维度顶格（10 分）——但请务必读完下一节，再决定这 10 分对你值多少钱。
+    </div>
+  </div>
+
+  <!-- ============ IHDI 打假 ============ -->
+  <div class="section">
+    <h2>重点科普：「IHDI 认证」这句话，从根上就不成立</h2>
+    <p class="section-desc">国内腰凳商详页高频出现"通过国际髋关节发育不良协会（IHDI）认证""IHDI 髋关节友好认证"。我把 IHDI 官网翻了一遍，把原话搬过来。</p>
+
+    <h3>IHDI 官网原文（婴儿背带专题页）</h3>
+    <div class="quote">
+      "The IHDI <b>is not a certifying body and has never performed safety testing of any products</b>, but does acknowledge companies whose mission aligns with that of the IHDI."
+      <i>译：IHDI 不是认证机构，且从未对任何产品进行过安全测试；但会认可那些使命与 IHDI 一致的企业。</i>
+    </div>
+    <div class="quote">
+      "Based on the best available evidence, IHDI maintains that <b>no baby carrier can cause or prevent hip dysplasia</b>."
+      <i>译：基于现有最佳证据，IHDI 认为<b>没有任何婴儿背带能够导致或预防髋关节发育不良</b>。</i>
+    </div>
+    <div class="quote">
+      "IHDI is a 501(c)(3) nonprofit. We collaborate with industry partners to advance education, but <b>we do not certify or endorse products</b>. Always follow your healthcare provider's advice when selecting babywearing or sleep products."
+      <i>译：IHDI 是 501(c)(3) 非营利组织。我们与行业伙伴合作推进教育，但<b>我们不认证也不背书任何产品</b>。选择背娃或睡眠产品时，请始终遵循你的医疗专业人员的建议。</i>
+    </div>
+    <p class="src">来源：<a href="https://hipdysplasia.org/?p=9984/" target="_blank" rel="noopener">IHDI 官网 · Baby Carriers &amp; Related Products</a></p>
+
+    <h3>那"IHDI 合作伙伴"是什么？是付费企业合作，明码标价</h3>
+    <p class="section-desc">IHDI 官网「Corporate Partnership（企业合作）」页面公开列出了合作档位与金额：</p>
+    <div class="scroll">
+    <table>
+      <tr><th>合作档位</th><th>金额</th><th>期限</th></tr>
+      <tr><td>Silver 银级</td><td class="hl">$25,000</td><td>5 年</td></tr>
+      <tr><td>Gold 金级</td><td class="hl">$100,000</td><td>5 年</td></tr>
+      <tr><td>Platinum 铂金级</td><td class="hl">$250,000</td><td>5 年</td></tr>
+      <tr><td>Diamond 钻石级</td><td class="hl">$500,000</td><td>5 年</td></tr>
+    </table>
+    </div>
+    <p class="src">来源：<a href="https://hipdysplasia.org/?p=9816" target="_blank" rel="noopener">IHDI 官网 · Corporate Partnership</a>。同页明确写着："IHDI is a nonprofit scientific organization; <b>we do not certify or endorse individual products</b>."</p>
+    <div class="callout dang">
+      <b>所以正确的理解是：</b>一款背带出现在 IHDI 网站的产品清单里，说明这家企业<b>付费成为了 IHDI 的教育与倡导合作方</b>，并且其产品被 IHDI 认可为"与髋关节健康理念相符"。<b>它不是检测，不是认证，没有做过任何安全测试，也不构成产品背书。</b><br>
+      商详页写"通过 IHDI 认证"——按 IHDI 自己的表述，这属于<b>不准确宣传</b>。
+    </div>
+    <div class="callout info">
+      <b>连 Ergobaby 官方都承认这件事。</b>Ergobaby 帮助中心对"你们的背带获得 IHDI 髋关节友好认可了吗"的官方回答是：<br>
+      "The International Hip Dysplasia Institute (IHDI) <b>has transitioned away from certifying products</b>, including providing certification documentation for specific models."<br>
+      <i>译：IHDI 已经<b>不再对产品做认证</b>，也不再为特定型号提供认证文件。</i><br>
+      <span class="src">来源：<a href="https://help.ergobaby.com/hc/en-us/articles/47789035288219-Are-your-carriers-acknowledged-as-hip-healthy-by-the-International-Hip-Dysplasia-Institute-IHDI" target="_blank" rel="noopener">Ergobaby Help Center 官方 FAQ</a></span>
+    </div>
+
+    <h3>那髋关节这事到底该怎么看？IHDI 真正说了有用的话</h3>
+    <p class="section-desc">否掉"认证"话术之后，别把有用的科普一起扔掉。IHDI 在同一份声明里给出了<b>真正可操作</b>的判断标准：</p>
+    <div class="quote">
+      "IHDI states that <b>tight swaddling and restricting hip motion</b>, particularly by avoiding flexion and abduction, <b>can cause hip dysplasia</b>." / "IHDI affirms that <b>products allowing unrestricted motion do not cause hip dysplasia</b>."
+      <i>译：紧绑襁褓、限制髋部活动（尤其是妨碍屈曲与外展）<b>会导致</b>髋关节发育不良；而<b>允许髋部自由活动的产品不会导致</b>髋关节发育不良。</i>
+    </div>
+    <div class="callout good">
+      <b>翻译成人话，选背带时该看的不是有没有洋标，而是这三点：</b><br>
+      ① <b>宝宝双腿能不能自然张开成 M 型</b>（膝盖略高于屁股），而不是双腿并拢、直直往下吊；<br>
+      ② <b>承托面是否托住整条大腿（膝到膝）</b>，而不是只有裆部一条带子；<br>
+      ③ <b>髋部能不能自由活动</b>——不被硬绑固定。<br>
+      这三点你在<b>上身试穿时肉眼就能判断</b>，不需要任何证书。反过来说：一个能让宝宝双腿自然外展、大腿有完整承托的 139 元腰凳，在髋位这件事上并不输给 1199 元的。
+    </div>
+    <div class="callout warn">
+      <b>本页"髋位公示"维度到底在量什么：</b>它量的是<b>品牌在髋位话题上的信息披露程度与与国际组织的互动深度</b>，<b>不代表该产品的髋部安全性获得了第三方检测背书</b>——因为按 IHDI 自述，这种背书根本不存在。这也是我把它的权重压到 10% 的原因。
+    </div>
+  </div>
+
+  <!-- ============ 比价 ============ -->
+  <div class="section">
+    <h2>参考价对比</h2>
+    <p class="section-desc">价格为 2026 年 8–9 月主流电商参考到手价，<span class="lv o">🟠 电商页公示价</span>，大促期间普遍更低，以你下单时页面为准。"每元口碑"一列 = 评论数 ÷ 价格，仅作热度性价比的粗略参考，不代表质量。</p>
+    <div class="scroll"><table id="priceTable"></table></div>
+    <div class="callout warn">
+      <b>比价之外，两个更值钱的判断：</b><br>
+      ① <b>抱抱熊 V28（¥139）与 虎贝尔 AirFit（¥398）标称生产单位为同一家</b>——晋江嘉年华婴儿用品有限公司（依据 2025 年苏州抽查表两行的"标称生产单位名称"字段）。同源工厂，价差 259 元。差价买的是设计、面料、品牌与渠道，<b>不一定是安全冗余</b>。<br>
+      ② <b>百元档与主流档的真实差距，往往在"承托结构与面料"，不在"是否合格"</b>——因为合格是底线要求，不是卖点。
+    </div>
+  </div>
+
+  <!-- ============ 使用安全 ============ -->
+  <div class="section">
+    <h2>比选哪款更重要：腰凳背带的正确用法</h2>
+    <p class="section-desc">这个品类的伤害事件，绝大多数不是产品坏了，而是<b>用错月龄、姿势不对、没扣稳</b>。下面几条比任何横评结论都重要。</p>
+
+    <div class="pit"><div class="num">1</div><div><b>硬质腰凳：等宝宝能自己稳稳独坐再用（通常 6 个月后）</b>
+      <p>硬坐凳是让宝宝以"坐姿"承重，脊柱和颈部要有足够力量。月龄太小用坐凳，腰背悬空、脊柱受压。小月龄要抱，请用<b>软结构背带的竖抱/横抱模式</b>，并确认腰凳的说明书标称起始月龄——注意上海抽查中就有产品因"使用说明"不合格被通报，说明书缺失时更要谨慎。</p></div></div>
+
+    <div class="pit"><div class="num">2</div><div><b>气道安全：记住 T.I.C.K.S 五条</b>
+      <p><b>T</b>ight 贴紧（背带要贴身，宝宝不能在里面下滑）／<b>I</b>n view 随时看得见宝宝的脸／<b>C</b>lose enough to kiss 低头能亲到宝宝头顶／<b>K</b>eep chin off chest 下巴不要压在胸口（保持一指空隙）／<b>S</b>upported back 背部有支撑、呈自然姿势。<br>
+      <span class="src">T.I.C.K.S 是国际通行的背巾/背带安全口诀（由 School of Babywearing 提出），<span class="lv o">🟠 行业共识口诀，非强制标准条文</span>。核心风险是小月龄宝宝气道被挤压且无力自行调整。</span></p></div></div>
+
+    <div class="pit"><div class="num">3</div><div><b>面朝外：不是越早越好，也不宜长时间</b>
+      <p>面朝外要求宝宝<b>已能完全稳定地控制头部</b>，且这个姿势下大腿承托通常不如面朝内。IHDI 立场是"允许髋部自由活动即可"，但从承托角度，<b>小月龄优先面朝内，面朝外单次时间不宜过长</b>，宝宝出现烦躁或过度刺激就转回来。<span class="lv o">🟠 综合行业共识，具体月龄门槛请以你所购型号说明书为准</span></p></div></div>
+
+    <div class="pit"><div class="num">4</div><div><b>每次都手动确认所有卡扣与旋钮</b>
+      <p>尤其是带旋钮收紧结构的款式，扣好后<b>用手拽一下测试</b>。弯腰、下蹲、上下车时用手护住宝宝。<b>腰凳不是安全座椅</b>——坐车必须使用安全座椅，任何情况下都不能抱着或用腰凳代替。</p></div></div>
+
+    <div class="pit"><div class="num">5</div><div><b>别忽略你自己的腰</b>
+      <p>单肩/无肩带的纯腰凳会把全部重量压在腰椎与骨盆前侧。<b>剖腹产恢复期、有腰椎问题的家长，优先选带双肩带的二合一款并使用背带模式</b>，把重量分到肩背。这是本期二合一款普遍优于纯腰凳的实际理由。</p></div></div>
+  </div>
+
+  <!-- ============ 选购建议 ============ -->
+  <div class="section">
+    <h2>选购建议：按你家情况对号入座</h2>
+    <p class="section-desc">没有"最好的腰凳"，只有"最对路的选择"。价格为参考价，以实际页面为准。</p>
+    <div class="scroll">
+    <table>
+      <tr><th style="width:19%">你的情况</th><th style="width:20%">优先看</th><th>为什么</th><th style="width:24%">注意</th></tr>
+      <tr>
+        <td class="l"><b>预算优先 / 只是偶尔短途抱</b></td>
+        <td><b>抱抱熊 V28</b><br>（≈¥139）</td>
+        <td class="l">本期<b>唯一四次抽查均"未发现不合格"</b>的品牌（2022 苏州、2023 苏州、2024 南京、2025 苏州），且价格最低。抱娃这件事上，"便宜且经得起查"比"贵且没查过"更实在。</td>
+        <td class="l">被抽查的是同品牌"可折叠/多功能抱婴腰凳"，<b>V28 本型号未被抽到</b>。主体公司有行政处罚记录（二手来源，未核到原件）。承托与面料是百元档水平，别期待高端体感。</td>
+      </tr>
+      <tr>
+        <td class="l"><b>最看重安全记录，预算充足</b></td>
+        <td><b>bebebus 轻享家 Pro</b><br>（≈¥610）</td>
+        <td class="l">同系列"Free+轻享家 四季腰凳"在 2025 苏州抽查"未发现不合格"，2023 苏州"轻享家腰凳"合格、2022 苏州"蝶形背带"合格——<b>连续三次抽查在榜且无不合格</b>，同时是本期口碑体量最大（10 万+ 评论）。</td>
+        <td class="l">被抽查型号为"Free+轻享家 四季腰凳"，与在售"轻享家 Pro"为<b>同系列不同型号</b>。价格在国产里偏高。</td>
+      </tr>
+      <tr>
+        <td class="l"><b>想要"抽查过关 + 价格不离谱"的平衡</b></td>
+        <td><b>虎贝尔 HBR AirFit</b><br>（≈¥398）</td>
+        <td class="l">2025 苏州抽查"悬浮腰凳 型号 Air"未发现不合格，未核到任何不合格记录。安全分与 bebebus 并列最高（9/10），但便宜 212 元。</td>
+        <td class="l">在售名"AirFit"与抽查样品标称"Air"命名略有差异，判定为同系列。<b>评论数仅 2000</b>，是本期最少，长期口碑样本不足。</td>
+      </tr>
+      <tr>
+        <td class="l"><b>不在意预算，要月龄跨度和长时间穿戴舒适</b></td>
+        <td><b>Ergobaby Omni Breeze</b><br>（≈¥1129）</td>
+        <td class="l">纯软结构背带，无硬坐凳，从新生儿期即可使用且不需另买插件，是本期<b>月龄跨度与长时间穿戴舒适度的第一梯队</b>。软结构对宝宝髋部自由活动更友好。</td>
+        <td class="l"><b>在国内公开抽查名单中查无记录</b>（不是查到问题，是没查到记录）。价格是抱抱熊的 8 倍。没有硬坐凳，<b>大月龄频繁抱起放下不如腰凳方便</b>。</td>
+      </tr>
+      <tr>
+        <td class="l"><b>就是想要 IHDI 清单里的产品</b></td>
+        <td><b>比威亚 bvya 解放者</b>（≈¥598）<br>或 <b>Ergobaby Alta</b>（≈¥1199）</td>
+        <td class="l">这两款是本期<b>唯一在 IHDI 现行企业合作产品清单中具名收录</b>的（Baby Hip Seat Carrier Liberator / Ergobaby Alta Hip Seat and Carrier）。比威亚便宜 601 元。</td>
+        <td class="l"><b>务必先读上面 IHDI 那一节</b>：清单收录 = 付费企业合作 + 理念认可，<b>不是认证、没做过安全测试、不构成产品背书</b>。两款均未核到国内监管抽查记录。为这一条多花钱前请想清楚。</td>
+      </tr>
+      <tr>
+        <td class="l"><b>看中了十月结晶（评论数 5 万，很容易被推荐）</b></td>
+        <td class="bad">建议换款</td>
+        <td class="l">同品牌婴儿腰凳在 2024-01 上海抽查中被检出<b>整体动态稳定性</b>（结构安全项）、pH 值、耐光及汗复合色牢度<b>四项不合格</b>；2026-04 浙江省抽查中背带 SH3125 pH 值不合格；2026 年因该型号被杭州上城区市监局<b>罚款 1.02 万元</b>。安全分 2/10，本期最低。</td>
+        <td class="l">评论数高（5 万）说明卖得好，<b>不说明品控好</b>。若已购入，重点检查坐凳与腰带连接处是否牢固，并留意宝宝接触部位皮肤反应。</td>
+      </tr>
+      <tr>
+        <td class="l"><b>看中了丸丫云感腰凳（小红书/抖音高频出现）</b></td>
+        <td class="bad">建议换款或先核批次</td>
+        <td class="l"><b>同型号 WY-YD001 在 2025 年苏州市监局抽查中纤维含量不合格。</b>虽属标识项（成分标注与实测不符）而非结构安全项，但这是本期唯一"参评型号本身被抽到且判不合格"的产品。</td>
+        <td class="l">若已购入或坚持要买：向客服索要<b>对应批次</b>的纤维含量与 pH 检测报告，并核对吊牌成分标注。不必因"标识不合格"恐慌到弃用，但要知道你为"成分"付的钱可能没买到。</td>
+      </tr>
+      <tr>
+        <td class="l"><b>babycare / 两只兔子 这两款怎么看</b></td>
+        <td>可选，但需知情</td>
+        <td class="l"><b>babycare</b>（≈¥299）：同系列"4 Classic S 轻便背带"2025 苏州未发现不合格，价格适中、口碑 2 万。<b>两只兔子</b>（≈¥468）：未核到任何抽查记录，中性。</td>
+        <td class="l">babycare 主体杭州白贝壳<b>有多起监管不合格与行政处罚记录</b>（2024-01 Free 减压背带纤维含量不合格并于 2024-04 被罚 1.29 万；2024-11 婴童床笠 pH 不符<b>强制性</b>国标被罚），故安全分只给 6。两只兔子属"没查到记录"，既不加分也不减分。</td>
+      </tr>
+    </table>
+    </div>
+    <div class="callout warn">
+      <b>📌 下单前最后 3 句大实话：</b>① <b>合格是底线不是卖点</b>——商家拿"通过国标检测"当核心卖点时，等于在说一句废话；② <b>一定上身试穿</b>，腰凳合不合适高度依赖你的身高腰围和宝宝体型，退换很麻烦；③ <b>用法比选品更决定安全</b>，请把上面 T.I.C.K.S 那一节看完。
+    </div>
+  </div>
+
+  <!-- ============ 核验清单 ============ -->
+  <div class="section">
+    <h2>下单前核验清单：4 步把安全锁死</h2>
+    <p class="section-desc">看中某款后别只信详情页。这 4 步比看任何横评（包括本页）都靠谱。</p>
+    <div class="pit"><div class="num blue">1</div><div><b>先查这个型号有没有被抽到过</b>
+      <p>用"品牌名 + 型号 + 监督抽查"在搜索引擎搜一遍，重点看<b>中国质量新闻网</b>、各地市场监管局官网的抽查通报，以及<b>国家企业信用信息公示系统</b>的行政处罚信息。查到"未发现不合格"是加分，查到不合格就换款。本页表格里的链接就是这么找到的，你可以复现。</p></div></div>
+    <div class="pit"><div class="num blue">2</div><div><b>向客服索要「对应批次」的检测报告</b>
+      <p>要求：同型号 + 同生产批次，带 CMA/CNAS 资质章。腰凳类重点看<b>整体动态稳定性</b>（结构安全）与 <b>pH 值、色牢度</b>（强制性国标 GB 31701）。<b>注意区分</b>"监管抽检"（市场随机买样，效力高）与"委托送检"（品牌自己送的样品，只代表那一份样品）。</p></div></div>
+    <div class="pit"><div class="num blue">3</div><div><b>把"洋认证"话术当成扣分项而不是加分项</b>
+      <p>看到"IHDI 认证""国际髋关节协会认证"，直接对照本页 IHDI 原文——<b>这个认证不存在</b>。一个品牌在最容易被核实的地方就选择夸大表述，它在你核不到的地方会怎么做，自己判断。</p></div></div>
+    <div class="pit"><div class="num blue">4</div><div><b>收货实地核验 3 件事</b>
+      <p>① <b>闻</b>：有明显刺鼻气味的先通风，异味重直接退（可能关联色牢度/助剂问题）；② <b>拽</b>：坐凳与腰带连接处、所有卡扣，空载状态下用力拽测试，有异响或位移就退；③ <b>核</b>：吊牌上的<b>纤维成分、执行标准号、适用月龄/体重</b>是否齐全——按国标这些必须标注，缺失本身就是不合格项。</p></div></div>
+  </div>
+
+  <!-- ============ 数据缺口 ============ -->
+  <div class="section">
+    <h2>本期没做到的事（数据缺口公开）</h2>
+    <p class="section-desc">按我的自我要求，把没核到的东西也摆出来，方便你判断本页结论的边界在哪。</p>
+    <div class="scroll">
+    <table>
+      <tr><th style="width:34%">缺口</th><th>影响</th></tr>
+      <tr><td class="l"><b>未自费买样送检</b></td><td class="l">本页无任何自测数据。所有"合格/不合格"均转引监管部门公开通报。</td></tr>
+      <tr><td class="l"><b>未逐款访问商详采集统一规格表</b></td><td class="l">故综合评分<b>删除了"月龄覆盖""参数完整度"两个维度</b>。自重、坐凳尺寸、腰围调节范围、承重上限等参数未纳入横比——这也是我不敢给出"承托最好的是哪款"结论的原因。</td></tr>
+      <tr><td class="l"><b>Ergobaby 国内抽查记录空白</b></td><td class="l">2022 年苏州抽查表中出现过"Ergobaby 坐垫式背带-透气款"一行，但公开表格<b>该行结论字段被截断</b>，无法确认结果，故按中性处理未采信。这可能低估了 Ergobaby 的安全分。</td></tr>
+      <tr><td class="l"><b>抱抱熊主体公司行政处罚细节未核到原件</b></td><td class="l">"晋江嘉年华 2024-04、2025-07 行政处罚"来自<span class="lv o">🟠 二手百科来源</span>，未核到处罚决定书原文，<b>不知涉及哪个产品、何种事由</b>。这是我把它安全分压到 8（而非 9）的原因，若能核到原件，分数可能上下浮动。</td></tr>
+      <tr><td class="l"><b>价格为单点采集</b></td><td class="l">未做多平台（京东/天猫/抖音/拼多多）同期比价。价格分基于单一参考价，大促期间排名可能变化。</td></tr>
+      <tr><td class="l"><b>未核到的记录 ≠ 产品没问题</b></td><td class="l">两只兔子、比威亚、Ergobaby 两款均属"查无记录"。这四款按中性 6 分处理，<b>它们的真实安全水平本页无法评价</b>。</td></tr>
+    </table>
+    </div>
+    <div class="callout info">
+      如果你手上有本页缺失的信息——尤其是这几款的<b>批次检测报告</b>或<b>更多抽查通报</b>，欢迎补充，我会更新本页并注明来源。
+    </div>
+  </div>
+
+  <!-- ============ 来源 ============ -->
+  <div class="section">
+    <h2>全部信息来源</h2>
+    <div class="scroll">
+    <table>
+      <tr><th style="width:30%">来源</th><th>用于本页哪些结论</th></tr>
+      <tr><td class="l"><a href="https://m.cqn.com.cn/ms/content/2025-11/07/content_9130632.htm" target="_blank" rel="noopener">2025 年苏州市婴幼儿背带（袋）市级监督抽查公告（第 9 期）</a><br><span class="src">中国质量新闻网转载 · <a href="https://finance.sina.cn/2025-11-07/detail-infwqkxv0974183.d.html" target="_blank" rel="noopener">新浪财经镜像</a></span></td><td class="l">丸丫云感腰凳 WY-YD001 纤维含量不合格；babycare 4 Classic S、抱抱熊可折叠抱婴腰凳、虎贝尔悬浮腰凳 Air、bebebus Free+轻享家四季腰凳、Babycare 轻薄透气款背带 均"未发现不合格"；抱抱熊与虎贝尔标称生产单位同为晋江嘉年华</td></tr>
+      <tr><td class="l"><a href="https://m.cqn.com.cn/ms/content/2025-01/10/content_9087027.htm" target="_blank" rel="noopener">2024 年南京市婴幼儿背带（袋）产品质量监督抽查结果</a></td><td class="l">抱抱熊可折叠抱婴腰凳"未发现不合格"；该批次抽查 15 批次、不合格 1 批次（pH 值）</td></tr>
+      <tr><td class="l"><a href="https://www.cqn.com.cn/ms/content/2023-07/17/content_8960187.htm" target="_blank" rel="noopener">2023 年苏州市婴幼儿背带（袋）抽查 · 8 批次合格率 100%</a></td><td class="l">抱抱熊多功能抱婴腰凳、bebebus 轻享家腰凳、Baby care 轻薄透气款背带 均合格</td></tr>
+      <tr><td class="l"><a href="https://finance.sina.com.cn/jjxw/2022-08-01/doc-imizmscv4375135.shtml" target="_blank" rel="noopener">2022 年苏州市婴幼儿背带（袋）市级监督抽查公告（第 12 期）</a></td><td class="l">抱抱熊多功能抱婴腰凳、bebebus 蝶形婴儿背带 合格；Ergobaby 坐垫式背带在榜但结论字段截断（未采信）</td></tr>
+      <tr><td class="l"><a href="https://www.sohu.com/a/752189548_161795" target="_blank" rel="noopener">上海市市场监管局婴幼儿背带监督抽查 · 12 批次不合格（南都湾财社 2024-01 报道）</a></td><td class="l">行业底数 120 批次抽检 12 批次不合格；十月结晶腰凳四项不合格；babycare Free 减压背带纤维含量不合格；迪士尼腰凳 5 项不合格</td></tr>
+      <tr><td class="l"><a href="https://news.k618.cn/dj/202606/t20260605_20033132.html" target="_blank" rel="noopener">十月结晶代工背带不合格被罚 1.02 万元（未来网 2026-06-05）</a></td><td class="l">十月结晶 SH3125 抽检不合格及行政处罚；2026-04 浙江省抽查 SH3125 pH 值不合格；品牌代工模式占比情况</td></tr>
+      <tr><td class="l"><a href="https://hipdysplasia.org/?p=9984/" target="_blank" rel="noopener">IHDI 官网 · Baby Carriers &amp; Related Products</a></td><td class="l">IHDI 非认证机构、从未做产品安全测试、不认证不背书；"没有背带能导致或预防髋关节发育不良"；限制髋部活动才是风险；现行企业合作产品清单（含 Bvya 解放者、Ergobaby Alta，不含 Omni Breeze）</td></tr>
+      <tr><td class="l"><a href="https://hipdysplasia.org/?p=9816" target="_blank" rel="noopener">IHDI 官网 · Corporate Partnership</a></td><td class="l">企业合作四档明码标价（$25,000 / $100,000 / $250,000 / $500,000，均为 5 年期）</td></tr>
+      <tr><td class="l"><a href="https://help.ergobaby.com/hc/en-us/articles/47789035288219-Are-your-carriers-acknowledged-as-hip-healthy-by-the-International-Hip-Dysplasia-Institute-IHDI" target="_blank" rel="noopener">Ergobaby 官方 FAQ · 关于 IHDI 认可</a></td><td class="l">品牌方确认 IHDI 已停止产品认证与型号认证文件</td></tr>
+      <tr><td class="l"><a href="https://www.china-kids-fair.com/media_center/16867" target="_blank" rel="noopener">CKE 中国婴童用品展 · 展商新品资料</a></td><td class="l">确认"丸丫 Oneye"为同一品牌、云感腰凳为其主推产品（用于交叉验证抽查名单中的 Oneye 商标）</td></tr>
+      <tr><td class="l"><a href="https://www.jd.com/phb/131984a8fb1b07a90ccc.html" target="_blank" rel="noopener">京东 · 高端婴儿背带品牌排行榜</a> / <a href="https://www.jd.com/phb/1319f185bcee583faf62.html" target="_blank" rel="noopener">背带婴儿品牌排行榜</a></td><td class="l">选品依据与各款公示评论数（口碑维度全部取自这两页）</td></tr>
+      <tr><td class="l"><span class="lv o">🟠 二手来源</span> 百科类词条（<a href="https://www.baike.com/wikiid/1840823727755446151" target="_blank" rel="noopener">babycare</a> / <a href="https://baike.baidu.com/item/抱抱熊/15439958" target="_blank" rel="noopener">抱抱熊</a>）</td><td class="l">babycare 主体 2024 年多起处罚金额细节；抱抱熊主体行政处罚记录存在性、参与国标起草。<b>均未核到原始决定书，已在页面标注为二手</b></td></tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <b>免责声明：</b>本页为个人博主的资料整合型横评，基于市场监管部门公开抽查通报、品牌官网公开信息与电商公开页面整理，<b>不含任何自测数据</b>，仅供参考，不构成医疗建议，亦非官方背书或购买建议。综合评分为作者设定权重的主观加权模型，仅适用于本页 10 款内部横比。产品状态、价格、批次质量会随时间变化，购买前请以品牌官方与电商页面最新信息、以及你所购批次的实际检测资料为准。文中「品牌方宣称」「行业共识」「二手来源」类表述已逐处标注可信度等级，请理性判断。本页涉及的监管抽查结论仅针对通报中的<b>特定批次特定型号</b>，不代表该品牌所有产品或你到手的批次。<br><br>
+    <b>关于宝宝安全的最后一句：</b>任何背带或腰凳都不能替代成人的看护与安全座椅。使用中请始终保持宝宝面部可见、气道通畅，并遵循产品说明书标注的月龄与体重限制。如宝宝有髋关节发育相关病史或疑虑，请咨询儿科/小儿骨科医生，不要依据任何测评内容自行判断。
+  </div>
+</div>
+
+<script>
+// ===================== 数据区（与 score_calc.py 输出一致，可复算）=====================
+const P = [
+  { rank:1, name:"抱抱熊 V28", brand:"bébéar 抱抱熊", tier:"百元档", type:"腰凳+背带",
+    price:139, comments:20000, s:{safety:8, price:10.0, wom:8.6, hip:4}, total:82.2, dz:1,
+    regResult:"4 次未发现不合格", regType:"same-brand",
+    regDetail:"同品牌「可折叠/多功能抱婴腰凳」在 2022 苏州、2023 苏州、2024 南京、2025 苏州共 4 次监督抽查中均判定「未发现不合格」。标称生产单位：晋江嘉年华婴儿用品有限公司。负面：主体公司有 2024-04、2025-07 行政处罚记录（二手来源，未核到原件、事由不明）。参评型号 V28 本身未被抽到。",
+    hipNote:"仅宣称人体工学，未在 IHDI 清单内",
+    verdict:"便宜且经得起查。本期唯一四次抽查在榜且全部过关的品牌。" },
+
+  { rank:2, name:"bebebus 轻享家 Pro", brand:"BeBeBus", tier:"中高端", type:"腰凳+背带",
+    price:610, comments:100000, s:{safety:9, price:5.2, wom:10.0, hip:4}, total:77.5, dz:1,
+    regResult:"3 次在榜无不合格", regType:"same-series",
+    regDetail:"2025 苏州抽查「BeBeBus Free+轻享家 四季腰凳」未发现不合格；2023 苏州「轻享家腰凳」合格；2022 苏州「蝶形婴儿背带」合格。标称生产单位：布童物联网科技（上海）有限公司。未核到任何不合格记录。被抽型号与在售「轻享家 Pro」为同系列不同型号。",
+    hipNote:"仅宣称人体工学，未在 IHDI 清单内",
+    verdict:"安全记录 + 口碑体量双强（10 万+ 评论），代价是国产里价格偏高。" },
+
+  { rank:3, name:"虎贝尔 HBR AirFit 悬浮腰凳", brand:"HBR 虎贝尔", tier:"主流档", type:"腰凳+背带",
+    price:398, comments:2000, s:{safety:9, price:6.58, wom:6.6, hip:4}, total:74.2, dz:1,
+    regResult:"未发现不合格", regType:"same-series",
+    regDetail:"2025 苏州抽查「悬浮腰凳 型号:Air」（标称生产单位 晋江嘉年华婴儿用品有限公司）未发现不合格。在售名为 AirFit，与抽查标称 Air 命名略有差异，判定同系列。未核到任何不合格记录。",
+    hipNote:"仅宣称人体工学，未在 IHDI 清单内",
+    verdict:"安全分与 bebebus 并列最高但便宜 212 元；短板是评论数仅 2000，长期口碑样本最少。" },
+
+  { rank:4, name:"babycare Classic 云海米", brand:"babycare", tier:"主流档", type:"腰凳+背带",
+    price:299, comments:20000, s:{safety:6, price:7.51, wom:8.6, hip:5}, total:68.0, dz:2,
+    regResult:"同系列过关 / 他型号不合格", regType:"mixed",
+    regDetail:"正面：2025 苏州「4 Classic S 轻便背带 BC2301511」未发现不合格；2025 苏州 + 2023 苏州「轻薄透气款婴儿背带」均过关。负面：2024-01 上海市监局「Free 减压背带」纤维含量不合格，2024-04 因该背带及托比恐龙牙刷被没收违法所得并罚款 1.29 万元；2024-11 婴童豆豆床品床笠面料 pH 值不符合强制性国标被罚（罚款细节为二手来源）。",
+    hipNote:"商详引用 IHDI 科普内容，但 babycare 不在 IHDI 现行合作企业清单内",
+    verdict:"价格适中、口碑不错，但主体公司不合格与处罚记录较多，安全分只能给 6。" },
+
+  { rank:5, name:"比威亚 bvya 解放者", brand:"比威亚 Bvya", tier:"主流档", type:"腰凳+背带",
+    price:598, comments:10000, s:{safety:6, price:5.26, wom:8.0, hip:10}, total:66.2, dz:2,
+    regResult:"未核到记录", regType:"none",
+    regDetail:"在公开渠道未核到任何监管监督抽查记录（既无合格也无不合格），按中性 6 分处理。注意：这不代表产品没问题，只代表没查到记录。",
+    hipNote:"IHDI 现行合作企业产品清单具名收录「Baby Hip Seat Carrier Liberator」——付费企业合作，非认证、未做安全测试",
+    verdict:"本期唯一进入 IHDI 清单的国产款，且比 Ergobaby Alta 便宜 601 元；但请先读懂 IHDI 那一节再决定这条值多少钱。" },
+
+  { rank:6, name:"两只兔子 Across 洞感 4D", brand:"两只兔子", tier:"主流档", type:"腰凳+背带",
+    price:468, comments:10000, s:{safety:6, price:6.06, wom:8.0, hip:4}, total:62.1, dz:2,
+    regResult:"未核到记录", regType:"none",
+    regDetail:"在公开渠道未核到任何监管监督抽查记录，按中性 6 分处理。网络上关于该款的「实测数据」多来自电商 SEO 软文（含明显生成痕迹与无法追溯的「第三方报告」引用），本页一律不予采信。",
+    hipNote:"仅宣称 4D 护腰/人体工学，未在 IHDI 清单内",
+    verdict:"没有负面记录，也没有正面记录。价格中上，属于「信息不足」型选项。" },
+
+  { rank:7, name:"Ergobaby Omni Breeze", brand:"Ergobaby", tier:"进口高端", type:"纯背带",
+    price:1129, comments:20000, s:{safety:6, price:3.2, wom:8.6, hip:6}, total:58.2, dz:2,
+    regResult:"未核到记录", regType:"none",
+    regDetail:"未核到近年国内监管抽查记录。2022 苏州抽查表中出现过「Ergobaby 坐垫式背带-透气款」一行，但公开表格该行结论字段被截断，无法确认结果，不予采信。",
+    hipNote:"Ergobaby 是 IHDI 合作企业，但现行清单只列 Omni Classic / Omni Deluxe，未含 Breeze；品牌官方 FAQ 已确认 IHDI 停止产品认证",
+    verdict:"纯软结构、月龄跨度与长时间穿戴舒适度本期第一梯队；排名低主要来自价格分与国内抽查记录空白，不是查到问题。" },
+
+  { rank:8, name:"Ergobaby Alta 腰凳", brand:"Ergobaby", tier:"进口高端", type:"腰凳+背带",
+    price:1199, comments:2000, s:{safety:6, price:3.0, wom:6.6, hip:10}, total:57.7, dz:2,
+    regResult:"未核到记录", regType:"none",
+    regDetail:"未核到近年国内监管抽查记录，按中性 6 分处理。",
+    hipNote:"IHDI 现行合作清单具名收录「Ergobaby Alta Hip Seat and Carrier」——付费企业合作，非认证",
+    verdict:"本期最贵。髋位公示顶格 + 品牌力，但价格分与口碑体量（2000 评论）双低。" },
+
+  { rank:9, name:"十月结晶 SH2999", brand:"十月结晶", tier:"百元档", type:"腰凳+背带",
+    price:179, comments:50000, s:{safety:2, price:9.18, wom:9.4, hip:4}, total:54.8, dz:3,
+    regResult:"多次不合格 + 万元罚单", regType:"fail-safety",
+    regDetail:"2024-01 上海市监局：同品牌婴儿腰凳（浙江施俞儿实业生产/供货，小红书平台销售）被检出「产品整体动态稳定性、pH 值、耐光及汗复合色牢度」四项不合格——其中整体动态稳定性属结构安全项，pH 值违反强制性国标 GB 31701。2026-04 浙江省市监局：SH3125 可调节简易婴幼儿背带 pH 值不合格。2026 年：因 2025-06-24 委托代加工的 400 件 SH3125 抽检不合格，被杭州市上城区市监局依《产品质量法》罚款 1.02 万元。",
+    hipNote:"仅宣称四季通用/透气，未在 IHDI 清单内",
+    verdict:"最便宜且评论数 5 万，但安全项不合格 + 多次不合格史 + 行政处罚，本期安全分最低。不推荐。" },
+
+  { rank:10, name:"丸丫 云感腰凳", brand:"丸丫 Oneye", tier:"主流档", type:"腰凳+背带",
+    price:450, comments:20000, s:{safety:4, price:6.18, wom:8.6, hip:4}, total:54.6, dz:3,
+    regResult:"同型号纤维含量不合格", regType:"fail-label",
+    regDetail:"2025 苏州市监局抽查：「云感腰凳 / 标称商标 Oneye.(图形) / 型号 WY-YD001 / 标称生产单位 晋江市见来成婴儿用品有限公司 / 销售单位 孩子王太仓万达广场店」纤维含量不合格。经 CKE 展会展商资料与电商货号交叉验证，确认与本款为同一型号。性质说明：纤维含量属标识项（成分标注与实测不符），非结构安全项。",
+    hipNote:"仅宣称人体工学/云感支撑，未在 IHDI 清单内",
+    verdict:"本期唯一「参评型号本身被抽到且判不合格」的产品。450 元的价格 + 标识不合格记录，性价比说不过去。" },
+];
+
+const DIMS = [
+  { key:"safety", label:"安全记录" },
+  { key:"price",  label:"价格友好度" },
+  { key:"wom",    label:"口碑体量" },
+  { key:"hip",    label:"髋位公示" },
+];
+const COLORS = ['#1E5AA8','#2E7D32','#E8871A','#7B4FA8','#C0392B','#00838F','#5D6D7E','#B7950B','#AF601A','#873600'];
+
+// ===================== 概览卡片 =====================
+const LV = { 1:'<span class="lv g">🟢 抽查有记录且过关</span>', 2:'<span class="lv o">🟠 中性 / 混合</span>', 3:'<span class="lv w" style="background:#fdeeec;color:#C0392B;border-color:#f0b8b0">🔴 有不合格记录</span>' };
+document.getElementById('cards').innerHTML = P.map(p => `
+  <div class='card d${p.dz}'>
+    <span class='rk'>#${p.rank} · ${p.total}</span>
+    <h3>${p.name}</h3>
+    <div class='brand'>${p.brand} · ${p.tier} · ${p.type}</div>
+    <div class='price'>¥${p.price}</div>
+    <div class='unit'>京东公示评论 ${p.comments >= 10000 ? (p.comments/10000) + ' 万+' : p.comments + '+'}</div>
+    <ul>
+      <li><span>安全记录</span><b>${p.s.safety}/10</b></li>
+      <li><span>抽查情况</span><b style='font-size:12px'>${p.regResult}</b></li>
+      <li><span>髋位公示</span><b>${p.s.hip}/10</b></li>
+    </ul>
+    <div style='margin-top:8px'>${LV[p.dz]}</div>
+  </div>`).join('');
+
+// ===================== 综合排名柱状图 =====================
+const rankChart = echarts.init(document.getElementById('rankChart'));
+const rp = P.slice().reverse();
+rankChart.setOption({
+  tooltip:{ trigger:'axis', axisPointer:{type:'shadow'},
+    formatter: function(ps){
+      const d = P.find(x => x.name === ps[0].name);
+      return `<b>${d.name}</b><br/>综合分 <b>${d.total}</b><br/>安全 ${d.s.safety} · 价格 ${d.s.price} · 口碑 ${d.s.wom} · 髋位 ${d.s.hip}<br/>¥${d.price}`;
+    } },
+  grid:{ left:8, right:60, top:10, bottom:24, containLabel:true },
+  xAxis:{ type:'value', max:100, name:'综合分', axisLine:{lineStyle:{color:'#bbb'}}, splitLine:{lineStyle:{color:'#eee'}} },
+  yAxis:{ type:'category', data: rp.map(p => p.name), axisLine:{lineStyle:{color:'#bbb'}}, axisLabel:{fontSize:12} },
+  series:[{ type:'bar', data: rp.map(p => ({
+      value:p.total,
+      itemStyle:{ color: p.dz===1 ? '#2E7D32' : (p.dz===3 ? '#C0392B' : '#1E5AA8'), borderRadius:[0,4,4,0] }
+    })),
+    barWidth:'62%',
+    label:{ show:true, position:'right', formatter:'{c}', fontWeight:'bold', color:'#555' } }]
+});
+
+// ===================== 排名明细表 =====================
+document.getElementById('rank').innerHTML =
+  `<tr><th>排名</th><th>产品</th><th>参考价</th><th>综合分</th><th>安全记录<br>45%</th><th>价格友好<br>25%</th><th>口碑体量<br>20%</th><th>髋位公示<br>10%</th></tr>` +
+  P.map(p => `<tr>
+      <td class='hl'>#${p.rank}</td>
+      <td class='l'><b>${p.name}</b><br><span class='src'>${p.tier} · ${p.type}</span></td>
+      <td>¥${p.price}</td>
+      <td class='hl'>${p.total}</td>
+      <td class='${p.s.safety >= 8 ? 'ok' : (p.s.safety <= 4 ? 'bad' : '')}'>${p.s.safety}</td>
+      <td>${p.s.price}</td>
+      <td>${p.s.wom}</td>
+      <td>${p.s.hip}</td>
+    </tr>`).join('');
+
+// ===================== 监管抽查记录总表 =====================
+const RT = {
+  'same-brand':  '<span class="lv g">同品牌其他型号过关</span>',
+  'same-series': '<span class="lv g">同系列过关</span>',
+  'mixed':       '<span class="lv o">同系列过关 / 他型号不合格</span>',
+  'none':        '<span class="lv w">未核到记录</span>',
+  'fail-label':  '<span class="lv w" style="background:#fdeeec;color:#C0392B;border-color:#f0b8b0">同型号不合格（标识项）</span>',
+  'fail-safety': '<span class="lv w" style="background:#fdeeec;color:#C0392B;border-color:#f0b8b0">同型号不合格（含安全项）</span>',
+};
+document.getElementById('regTable').innerHTML =
+  `<tr><th style='width:15%'>产品</th><th style='width:11%'>安全分</th><th style='width:16%'>证明力</th><th>监管抽查 / 处罚记录明细</th></tr>` +
+  P.slice().sort((a,b) => b.s.safety - a.s.safety).map(p => `<tr>
+      <td class='l'><b>${p.name}</b><br><span class='src'>¥${p.price}</span></td>
+      <td class='${p.s.safety >= 8 ? 'ok' : (p.s.safety <= 4 ? 'bad' : '')}'>${p.s.safety}/10</td>
+      <td>${RT[p.regType]}</td>
+      <td class='l' style='font-size:13px'>${p.regDetail}</td>
+    </tr>`).join('');
+
+// ===================== 散点图：价格 vs 安全记录 =====================
+const scatter = echarts.init(document.getElementById('scatter'));
+scatter.setOption({
+  tooltip:{ formatter: function(pt){
+      const d = P.find(x => x.name === pt.data[2]);
+      return `<b>${d.name}</b><br/>参考价 ¥${d.price}<br/>安全记录分 <b>${d.s.safety}/10</b><br/>${d.regResult}`;
+    } },
+  grid:{ left:8, right:30, top:20, bottom:40, containLabel:true },
+  xAxis:{ type:'value', name:'参考价（元）', min:0, max:1300, splitLine:{lineStyle:{color:'#eee'}}, axisLine:{lineStyle:{color:'#bbb'}} },
+  yAxis:{ type:'value', name:'安全记录分', min:0, max:10, splitLine:{lineStyle:{color:'#eee'}}, axisLine:{lineStyle:{color:'#bbb'}} },
+  series:[{
+    type:'scatter',
+    symbolSize: function(v){ return 16; },
+    data: P.map(p => ({
+      value:[p.price, p.s.safety, p.name],
+      itemStyle:{ color: p.dz===1 ? '#2E7D32' : (p.dz===3 ? '#C0392B' : '#1E5AA8') },
+      label:{ show:true, position:'top', formatter:p.name, fontSize:11, color:'#555' }
+    })),
+    markArea:{ silent:true, itemStyle:{ color:'rgba(46,125,50,.07)' },
+      data:[[{ xAxis:0, yAxis:7.5 },{ xAxis:450, yAxis:10 }]] }
+  }]
+});
+
+// ===================== 四维雷达 =====================
+const radar = echarts.init(document.getElementById('radar'));
+const defaultSel = {};
+P.forEach(p => { defaultSel[p.name] = [1,2,3,9,10].indexOf(p.rank) >= 0; });
+radar.setOption({
+  tooltip:{},
+  legend:{ data:P.map(p => p.name), bottom:0, type:'scroll', selected:defaultSel, textStyle:{fontSize:12} },
+  color: COLORS,
+  radar:{ indicator: DIMS.map(d => ({ name:d.label, max:10 })), radius:'60%', center:['50%','44%'],
+    axisName:{ color:'#444', fontSize:13 }, splitLine:{lineStyle:{color:'#e4e4e4'}}, splitArea:{areaStyle:{color:['#fff','#fafcff']}} },
+  series:[{ type:'radar',
+    data: P.map(p => ({ name:p.name, value:DIMS.map(d => p.s[d.key]),
+      areaStyle:{opacity:.10}, lineStyle:{width:2}, symbolSize:5 })) }]
+});
+
+// ===================== 比价表 =====================
+document.getElementById('priceTable').innerHTML =
+  `<tr><th>产品</th><th>档位</th><th>形态</th><th>参考价</th><th>京东公示评论</th><th>每元口碑</th><th>安全分</th></tr>` +
+  P.slice().sort((a,b) => a.price - b.price).map(p => `<tr>
+      <td class='l'><b>${p.name}</b></td>
+      <td>${p.tier}</td>
+      <td>${p.type}</td>
+      <td class='hl'>¥${p.price}</td>
+      <td>${p.comments >= 10000 ? (p.comments/10000) + ' 万+' : p.comments + '+'}</td>
+      <td>${Math.round(p.comments / p.price)}</td>
+      <td class='${p.s.safety >= 8 ? 'ok' : (p.s.safety <= 4 ? 'bad' : '')}'>${p.s.safety}/10</td>
+    </tr>`).join('');
+
+window.addEventListener('resize', () => { rankChart.resize(); radar.resize(); scatter.resize(); });
+</script>
+</body>
+</html>
